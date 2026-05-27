@@ -9,7 +9,7 @@ Este proyecto consiste en el diseño e implementación de un ecosistema digital 
 
 El sistema está construido bajo una arquitectura monolítica modular utilizando componentes tecnológicos eficientes de código abierto:
 
-* **Backend:** Java 17, Spring Boot 3.x, Spring Data JPA, Hibernate, Spring Security.
+* **Backend:** Java 21, Spring Boot 3.x, Spring Data JPA, Hibernate, Spring Security.
 * **Base de Datos:** MySQL 8.0 (Estructura relacional normalizada).
 * **Frontend:** HTML5, CSS3, JavaScript Nativo (Manejo de peticiones asíncronas mediante Fetch API).
 * **Componente Analítico:** Chart.js (Librería para la renderización de gráficos estadísticos en tiempo real).
