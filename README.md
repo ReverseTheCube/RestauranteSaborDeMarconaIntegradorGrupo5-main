@@ -1,118 +1,86 @@
-# "El Sabor de Marcona" - Sistema de Gestión de Restaurante
+# Smart Marcona - El Sabor de Marcona 🚀
+### Sistema Inteligente de Gestión de Pedidos y Analítica Comercial
 
-Este repositorio contiene el proyecto final "El Sabor de Marcona" para el curso **Curso Integrador I: Sistemas Software** (Sección: 43118).
+Este proyecto consiste en el diseño e implementación de un ecosistema digital transaccional y analítico a medida para el restaurante **"El Sabor de Marcona"**. La plataforma automatiza el flujo operativo de la toma de pedidos, despacho a cocina, liquidación en caja y la gestión de pensiones corporativas (B2B), transformando los registros transaccionales en indicadores estadísticos predictivos sin la necesidad de implementar un módulo físico de inventarios.
 
-El proyecto es un sistema de gestión integral basado en web desarrollado en **Java (Spring Boot)** para el backend y **HTML/CSS/JavaScript** para el frontend.
-
-## 🎯 Problema y Objetivo
-
-### Problema
-El restaurante "El Sabor de Marcona" gestiona actualmente sus procesos de forma manual, utilizando cuadernos para registrar ventas y gastos. Esto genera desorden en el control de ventas, pérdidas económicas y limita la capacidad de tomar decisiones informadas.
-
-### Objetivo General
-Desarrollar un sistema de gestión integral basado en web que automatice y optimice los procesos administrativos y financieros del restaurante , reemplazando los métodos manuales por una solución digital que garantice precisión, accesibilidad y apoyo a la toma de decisiones.
-
-## 🚀 Módulos del Sistema
-
-El sistema está dividido en los siguientes módulos principales, basados en los diagramas BPMN del proyecto :
-
-* **Módulo de Autenticación y Seguridad:**
-    * Proceso de Login (con bloqueo de intentos).
-    * Gestión de Usuarios (CRUD de empleados/roles).
-* **Módulo de Gestión de Menú:**
-    * Proceso de gestión y actualización de menús (CRUD de Platos).
-* **Módulo de Pedidos y Ventas:**
-    * Proceso de Gestión de Pedidos (Cajero/Mesero).
-    * Proceso de Pedidos Registrados (Buscar, Modificar).
-* **Módulo de Clientes y Pensiones:**
-    * Gestión de Clientes (CRUD).
-    * Gestión de Pensiones y Empresas.
-* **Módulo de Ventas e Historial:**
-    * Historial de ventas y generación de reportes.
-* **Módulo de Incidencias:**
-    * Registro y gestión de incidencias.
-
-## 📋 Alcance del Proyecto
-
-Este sistema busca automatizar los procesos de caja y pedidos. Las funciones implementadas incluyen:
-
-* Registro y segmentación de pedidos (local, delivery).
-* Generación de reportes de ventas diarios.
-* Cuadre automático de caja.
-* Control de gastos operativos.
-* Interfaz de usuario intuitiva y sencilla, diseñada para usuarios con bajo nivel tecnológico.
-
-## ⚠️ Limitaciones
-
-Es importante notar las limitaciones actuales del sistema, documentadas en el informe :
-
-* **Infraestructura:** Se implementa con la infraestructura disponible en el restaurante.
-* **Compatibilidad:** Optimizado únicamente para navegadores basados en Google Chrome.
-* **Datos:** La información se gestiona de manera local, no se contempla sincronización con la nube.
-* **Pagos:** No incluye pasarelas de pago electrónico (solo registro de ventas presenciales).
-* **Delivery:** No implementa GPS; la función de delivery se limita a un cargo adicional en el pedido.
+---
 
 ## 🛠️ Tecnologías Utilizadas
 
-### Backend
-* **Java (JDK 21)** 
-* **Spring Boot:** Framework principal para la API REST.
-* **Spring Data JPA (Hibernate):** Para la conexión con la base de datos y creación automática de tablas.
-* **Spring Security:** Para la autenticación (login) y autorización (roles).
-* **Lombok:** Para reducir código repetitivo en los modelos.
+El sistema está construido bajo una arquitectura monolítica modular utilizando componentes tecnológicos eficientes de código abierto:
 
-### Base de Datos
-* **MySQL:** Gestor de base de datos relacional.
+* **Backend:** Java 21, Spring Boot 3.x, Spring Data JPA, Hibernate, Spring Security.
+* **Base de Datos:** MySQL 8.0 (Estructura relacional normalizada).
+* **Frontend:** HTML5, CSS3, JavaScript Nativo (Manejo de peticiones asíncronas mediante Fetch API).
+* **Componente Analítico:** Chart.js (Librería para la renderización de gráficos estadísticos en tiempo real).
 
-### Frontend
-* **HTML5:** Estructura de las vistas.
-* **CSS3:** Diseño y estilos (basado en prototipos de Figma).
-* **JavaScript (Vanilla):** Para la lógica del cliente (login, CRUDs) y consumo de la API REST (fetch).
+---
 
-### Herramientas de Gestión y Modelado
-* **Eclipse IDE** 
-* **Git y GitHub:** Control de versiones.
-* **Bizagi:** Modelado de procesos (BPMN).
-* **StarUML:** Diagramas de Casos de Uso, Clases y Secuencias.
+## 📂 Estructura del Proyecto
 
-## 🚀 Cómo Empezar
+La organización del código fuente en el repositorio sigue las convenciones del patrón arquitectónico en capas del entorno Spring Boot:
 
-Sigue estos pasos para ejecutar el proyecto en tu máquina local:
+```text
+restaurantaplicacion/
+├── src/
+│   ├── main/
+│   │   ├── java/com/restaurant/restaurantaplicacion/
+│   │   │   ├── config/          # Configuraciones de seguridad del sistema
+│   │   │   ├── controller/      # Controladores REST (Mapeo de Endpoints y APIs)
+│   │   │   ├── dto/             # Data Transfer Objects (Payloads de entrada y salida)
+│   │   │   ├── model/           # Entidades de persistencia JPA (Tablas MySQL)
+│   │   │   ├── repository/      # Interfaces de acceso a datos (Spring Data JPA)
+│   │   │   └── service/         # Lógica pura del negocio y servicios estadísticos
+│   │   └── resources/
+│   │       ├── static/          # Vistas Frontend (HTML, CSS y JS por roles)
+│   │       └── application.properties # Archivo global de configuración del entorno
+└── pom.xml                      # Archivo de configuración de dependencias de Maven
+```
 
-1.  **Clonar el repositorio:**
-    ```bash
-    git clone [https://github.com/tu-usuario/RestauranteSaborDeMarconaIntegradorGrupo5.git](https://github.com/tu-usuario/RestauranteSaborDeMarconaIntegradorGrupo5.git)
-    cd restauranteaplicacion
-    ```
+---
 
-2.  **Configurar la Base de Datos:**
-    * Asegúrate de tener MySQL instalado y corriendo.
-    * Abre el archivo `src/main/resources/application.properties`.
-    * Modifica las siguientes líneas con tu usuario y contraseña de MySQL:
-        ```properties
-        spring.datasource.url=jdbc:mysql://localhost:3306/restaurantsabormarcona_db?createDatabaseIfNotExist=true
-        spring.datasource.username=root
-        spring.datasource.password=tu_contraseña_de_mysql
-        ```
-    * **Nota:** Spring Boot (Hibernate) creará automáticamente la base de datos `restaurantsabormarcona_db` y sus tablas si no existen.
+## 💻 Instrucciones de Instalación y Despliegue
 
-3.  **Ejecutar el Backend:**
-    * Abre el proyecto en tu IDE (Eclipse, IntelliJ, VSCode).
-    * Ejecuta la clase principal `RestaurantaplicacionApplication.java`.
-    * El servidor se iniciará en `http://localhost:8080`.
+Sigue estos tres pasos secuenciales para configurar y ejecutar el entorno de desarrollo local:
 
-4.  **Acceder a la Aplicación:**
-    * Abre tu navegador (preferiblemente Google Chrome) y ve a:
-    * `http://localhost:8080/`
+### 1. Configuración de la Base de Datos
+Ingresa a tu gestor de base de datos relacional (MySQL Workbench, phpMyAdmin o terminal de comandos) y crea un esquema o base de datos vacía para almacenar las tablas del sistema:
 
-5.  **Usuario por Defecto:**
-    * Puedes crear el usuario administrador usando la API (con Postman) o insertándolo directamente en tu MySQL.
-    * **Usuario:** `admin`
-    * **Contraseña:** `admin123`
+```sql
+CREATE DATABASE sabor_marcona_db;
+```
 
-## 👨‍💻 Integrantes del Equipo
+### 2. Configuración de Variables en application.properties
+Navega hasta la ruta `src/main/resources/application.properties` en tu editor de código y edita las siguientes líneas para sincronizar las credenciales de acceso a tu servidor MySQL local:
 
-* **Chirinos Mercado, Edgard Rafael** (U21206012)
-* **Choque Alfaro, Jhonatan Jeanpierre** (U23256844) 
-* **Sanchez Prieto, Victor Salvador** (U1627485) 
-* **Quicaña Taboada, Andre Sebastian** (U22330322) 
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/sabor_marcona_db?useSSL=false&serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=
+
+# Propiedades de configuración de Hibernate y JPA
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+```
+
+### 3. Compilación y Arranque del Servidor
+Abre una terminal de comandos posicionada en la raíz del proyecto donde se encuentra el gestor de automatización de Maven y ejecuta la aplicación:
+
+```bash
+./mvnw spring-boot:run
+```
+
+Una vez que la consola muestre la inicialización exitosa de Tomcat, el servidor web local quedará escuchando peticiones en el puerto asignado (por defecto `http://localhost:8080`), permitiendo el acceso a las interfaces web.
+
+---
+
+## 👥 Desarrollador y Créditos Académicos
+
+* **Autores:**
+*    Andre Sebastian Quicaña Taboada
+*    Jean Pier David Vega Choque
+*    Carlos Giovanni Cáceres Ramos
+*    Luciano Camavilca Cardenas 
+* **Institución:** Universidad Tecnológica del Perú (UTP)
+* **Sede:** Ica, Perú
+* **Año:** 2026
