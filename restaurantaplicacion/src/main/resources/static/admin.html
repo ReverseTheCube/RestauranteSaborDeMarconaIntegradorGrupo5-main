@@ -3,60 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú Administrador</title>
-    <link rel="stylesheet" href="/css/global.css">
+    <title>Panel de Administración - El Sabor de Marcona</title>
+    <!-- Referencia a tu hoja de estilos principal -->
+    <link rel="stylesheet" href="css/style.css"> 
+    <style>
+        /* Estilos base para garantizar el tema oscuro en el panel principal */
+        body {
+            background-color: #0b1320; 
+            color: #e0e6ea; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0; 
+            padding: 0;
+        }
+        .navbar {
+            background-color: #1c2a38; 
+            padding: 15px 30px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            border-bottom: 2px solid #ff9b1a;
+        }
+        .navbar a {
+            color: #e0e6ea; 
+            margin-left: 20px; 
+            text-decoration: none; 
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .navbar a:hover {
+            color: #ff9b1a;
+        }
+        .container {
+            padding: 40px; 
+            max-width: 1200px; 
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
-    <div class="card-container">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--secondary); padding-bottom: 15px;">
-            <h2 class="page-title" style="margin: 0; font-size: 1.5rem;">Panel Administrador</h2>
-            <a href="/logout" class="btn btn-danger" style="padding: 8px 16px; font-size: 0.9rem;">Cerrar Sesión</a>
+
+    <!-- Menú de Navegación del Administrador -->
+    <nav class="navbar">
+        <h2 style="margin: 0; color: #ff9b1a;">El Sabor de Marcona</h2>
+        <div>
+            <a href="ventaehistorial.html">Inteligencia Comercial</a>
+            <a href="gestion-usuarios.html">Usuarios</a>
+            <a href="gestion-cliente.html">Clientes</a>
+            <a href="index.html" style="color: #e74c3c;">Cerrar Sesión</a>
         </div>
-        <div class="page-subtitle">Seleccione una opción de gestión</div>
+    </nav>
 
-        <div class="grid-menu">
-            <a href="gestion-usuarios.html" class="btn btn-role-admin" style="padding: 30px;">
-                👥 Gestionar Usuarios
-            </a>
-            <a href="gestion-cliente.html" class="btn btn-role-admin" style="padding: 30px;">
-                🤝 Clientes y Pensiones
-            </a>
-            <a href="menu.html" class="btn btn-role-admin" style="padding: 30px;">
-                🍽️ Gestionar Menú
-            </a>
-            <a href="ventaehistorial.html" class="btn btn-role-admin" style="padding: 30px;">
-                📊 Historial y Ventas
-            </a>
-            <a href="/gestion-incidencias.html" class="btn btn-role-admin">
-                Gestión de Incidencias <span>&rarr;</span>
-            </a>
-        </div>
-        <div style="text-align: center; border-top: 1px solid var(--border-color); margin-top: 30px; padding-top: 20px;">
-            <button id="btn-reportar-incidencia" class="btn-reportar-flotante">
-                ⚠ Reportar un Problema
-            </button>
-        </div>
-    </div>
+    <!-- Contenido Principal -->
+    <div class="container">
+        <h1 style="text-align: center; color: #e0e6ea; margin-bottom: 10px;">Panel de Administración Principal</h1>
+        <p style="text-align: center; color: #888; margin-bottom: 40px;">Monitoreo en tiempo real de los indicadores de éxito del proyecto.</p>
 
-    <div id="modal-reportar-incidencia" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" id="close-modal-reporte">&times;</span>
-            <h3 style="color: var(--brand-primary);">Reportar Incidencia</h3>
-            <form id="form-reportar-incidencia">
-                <label style="text-align: left; display:block;">Prioridad:</label>
-                <select id="incidencia-prio" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
-                    <option value="BAJA">Baja</option>
-                    <option value="MEDIA" selected>Media</option>
-                    <option value="ALTA">Alta (Urgente)</option>
-                </select>
-
-                <label style="text-align: left; display:block;">Descripción del problema:</label>
-                <textarea id="incidencia-desc" rows="4" required style="width: 100%; padding: 10px;"></textarea>
-
-                <button type="submit" class="btn btn-primary" style="margin-top: 15px;">Enviar Reporte</button>
-            </form>
+        <!-- TARJETAS DE KPIs OFICIALES (Según Documento Smart Marcona) -->
+        <div style="display: flex; justify-content: space-between; gap: 20px; margin-bottom: 25px;">
+            
+            <!-- KPI 1: IDT -->
+            <div style="flex: 1; text-align: center; background: #1c2a38; border: 1px solid #2a4a5f; border-radius: 8px; padding: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.3);" title="Índice de Digitalización de Transacciones">
+                <h4 style="color: #e0e6ea; margin-top: 0; margin-bottom: 15px; font-size: 16px;">📱 KPI: IDT</h4>
+                <div id="adminKpiIdt" style="color: #3498db; font-size: 36px; font-weight: bold;">0%</div>
+                <div style="color: #888; font-size: 12px; margin-top: 10px;">Meta: 100%</div>
+            </div>
+            
+            <!-- KPI 2: PPM -->
+            <div style="flex: 1; text-align: center; background: #1c2a38; border: 1px solid #2a4a5f; border-radius: 8px; padding: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.3);" title="Precisión en Proyección de Menús">
+                <h4 style="color: #e0e6ea; margin-top: 0; margin-bottom: 15px; font-size: 16px;">🎯 KPI: PPM</h4>
+                <div id="adminKpiPpm" style="color: #2ecc71; font-size: 36px; font-weight: bold;">0%</div>
+                <div style="color: #888; font-size: 12px; margin-top: 10px;">Meta: > 85%</div>
+            </div>
+            
+            <!-- KPI 3: TPC -->
+            <div style="flex: 1; text-align: center; background: #1c2a38; border: 1px solid #2a4a5f; border-radius: 8px; padding: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.3);" title="Tiempo de Cierre Contable">
+                <h4 style="color: #e0e6ea; margin-top: 0; margin-bottom: 15px; font-size: 16px;">⏱️ KPI: TPC</h4>
+                <div id="adminKpiTpc" style="color: #ff9b1a; font-size: 36px; font-weight: bold;">0 min</div>
+                <div style="color: #888; font-size: 12px; margin-top: 10px;">Meta: < 2 min</div>
+            </div>
+            
         </div>
     </div>
-    <script src="/js/incidencias-reportar.js"></script>
+
+    <!-- Script para cargar los KPIs asíncronamente desde el backend -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            cargarKpisAdministrador();
+        });
+
+        async function cargarKpisAdministrador() {
+            try {
+                // Petición HTTP GET a nuestro endpoint de Spring Boot
+                const response = await fetch('/api/analytics/kpis-resumen');
+                
+                if (!response.ok) {
+                    throw new Error('Error en la respuesta del servidor');
+                }
+
+                const kpis = await response.json();
+                
+                // Inyectamos los valores en los contenedores correspondientes
+                document.getElementById('adminKpiIdt').innerText = kpis.idt.toFixed(1) + '%';
+                document.getElementById('adminKpiPpm').innerText = kpis.ppm.toFixed(1) + '%';
+                document.getElementById('adminKpiTpc').innerText = kpis.tpc.toFixed(1) + ' min';
+                
+            } catch (error) {
+                console.error("Error al cargar las Tarjetas KPI en el panel principal:", error);
+                
+                // Manejo de errores visual para el administrador
+                document.getElementById('adminKpiIdt').innerText = 'Error';
+                document.getElementById('adminKpiPpm').innerText = 'Error';
+                document.getElementById('adminKpiTpc').innerText = 'Error';
+            }
+        }
+    </script>
 </body>
 </html>
